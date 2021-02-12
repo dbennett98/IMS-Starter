@@ -16,10 +16,15 @@ It is also useful to use MYSQL Workbench  8.0.23
 
 ### Installing
 To run the application ensure you have java installed.
-Open a command prompt in the location of the IMS files.
+Open a command prompt in the location of the ims-0.0.1-jar-with-dependencies.jar within the IMS files.
 Ensure you navigate to the ims-0.0.1-jar-with-dependencies.jar files (located in the Target folder inside IMS)
 Enter the command "java -jar ims-0.0.1-jar-with-dependencies.jar"
-A step by step series of examples that tell you how to get a development env running
+
+![Applicationlaunch](https://i.ibb.co/cLQX8s8/application-launch.png)
+
+The application should now launch within the command prompt
+
+![Applicationlaunched](https://i.ibb.co/6nxcrkh/application-launched.png)
 
 ## Running the tests
 
@@ -67,6 +72,4 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 *For help in [Choosing a license](https://choosealicense.com/)*
 
 ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
+* Thank you to any of the QA trainers which provided with assistance whilst creating this project.
