@@ -1,6 +1,8 @@
 package com.qa.ims.persistence.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.qa.ims.persistence.domain.Customer;
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.DBUtils;
 
 public class CustomerDAOTest {
@@ -17,7 +20,7 @@ public class CustomerDAOTest {
 
 	@Before
 	public void setup() {
-		DBUtils.connect();
+		DBUtils.connect(); 
 		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
 	}
 
@@ -56,4 +59,19 @@ public class CustomerDAOTest {
 	public void testDelete() {
 		assertEquals(1, DAO.delete(1));
 	}
+	@Test
+	public void testReadException() {
+		final long ID = 10L;
+		assertEquals(null,DAO.read(ID));
+	}
+	@Test
+	public void testUpdateException() {
+		final Customer ID = new Customer(100L,"blob","kl");
+		assertEquals(null,DAO.update(ID));
+	}
+	@Test
+    public void testCreateFail() {
+        final Customer created = new Customer(null, null);
+        assertNotNull(DAO.create(created));
+    }
 }

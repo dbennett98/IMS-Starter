@@ -1,6 +1,7 @@
 package com.qa.ims.persistence.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,7 +69,7 @@ public class CustomerDAO implements Dao<Customer> {
 	 */
 	@Override
 	public Customer create(Customer customer) {
-		try (Connection connection = DBUtils.getInstance().getConnection();
+		try  (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
 						.prepareStatement("INSERT INTO customers(first_name, surname) VALUES (?, ?)");) {
 			statement.setString(1, customer.getFirstName());
@@ -130,9 +131,10 @@ public class CustomerDAO implements Dao<Customer> {
 	@Override
 	public int delete(long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM customers WHERE id = ?");) {
-			statement.setLong(1, id);
-			return statement.executeUpdate();
+				Statement statement = connection.createStatement();){
+			statement.executeUpdate("DELETE FROM order_item WHERE id = "+ id);
+					statement.executeUpdate("DELETE FROM orders WHERE id = "+ id);
+			return statement.executeUpdate("DELETE FROM customers WHERE id = "+ id);
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());

@@ -1,6 +1,7 @@
 package com.qa.ims.controller;
 
 import org.apache.logging.log4j.LogManager;
+
 import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.utils.Utils;
@@ -34,6 +35,14 @@ public enum Action {
 	 * Prints out all possible actions
 	 */
 	public static void printActions() {
+		for (Action action : Action.values()) {
+			LOGGER.info(action.getDescription());
+		}
+	}
+	/**
+	 * Prints out possible actions when Order domain is selected
+	 */
+	public static void printActionsOrders() {
 		for (Action action : Action.values()) {
 			LOGGER.info(action.getDescription());
 		}
